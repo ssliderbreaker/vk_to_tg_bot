@@ -166,8 +166,10 @@ def vk_callback():
 
 
     if VK_SECRET_KEY and data.get("secret") != VK_SECRET_KEY:
-        log.warning("Неверный secret key в запросе")
-        return "ok"  
+    log.warning(
+        "Неверный secret key в запросе: получено %r, ожидалось %r",
+        data.get("secret"), VK_SECRET_KEY,
+    )  
 
     if VK_GROUP_ID and str(data.get("group_id")) != str(VK_GROUP_ID):
         return "ok"
