@@ -164,12 +164,11 @@ def handle_message_new(obj: dict):
 def vk_callback():
     data = request.get_json(force=True, silent=True) or {}
 
-
     if VK_SECRET_KEY and data.get("secret") != VK_SECRET_KEY:
-    log.warning(
-        "Неверный secret key в запросе: получено %r, ожидалось %r",
-        data.get("secret"), VK_SECRET_KEY,
-    )  
+    	log.warning(
+        	"Неверный secret key в запросе: получено %r, ожидалось %r",
+        	data.get("secret"), VK_SECRET_KEY,
+    	)
 
     if VK_GROUP_ID and str(data.get("group_id")) != str(VK_GROUP_ID):
         return "ok"
